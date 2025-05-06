@@ -5,6 +5,10 @@
 
 1.Azure Ubuntu VM
 
+install Azure CLI 
+
+![Image](https://github.com/user-attachments/assets/63e1ddbc-c727-404e-a441-68cf698c23ea)
+
 2.Shell Scripts (for provisioning)
 
 3.Prometheus
@@ -19,6 +23,9 @@
 🔧 Step 1: Provision Azure Ubuntu VM:
 --------------------------------------
 🖥️ Create an Ubuntu VM on Azure:
+
+![Image](https://github.com/user-attachments/assets/481970d2-2853-43b1-8b65-575769d7478e)
+
 
 -Region: Your closest Azure region
 
@@ -52,6 +59,10 @@ ssh azureuser@<vm_public_ip>
 ```
 sudo apt update && sudo apt install -y wget curl tar unzip
 ```
+then install the required packages 
+
+![Image](https://github.com/user-attachments/assets/bd1b4f9b-b240-4725-87d7-62d9a3a06610)
+
 
 📦 Step 5: Install Prometheus:
 -------------------------------
@@ -103,12 +114,14 @@ scrape_configs:
 cd prometheus/prometheus
 ./prometheus --config.file=prometheus.yml
 ```
+![Image](https://github.com/user-attachments/assets/a7bf8f81-2a6b-47e2-84db-83415c8839b1)
 
 then visit here
 ```
 Visit http://<vm-ip>:9090
 
 ```
+![Image](https://github.com/user-attachments/assets/8af8ae44-5007-4c5d-8813-64e0cd29c72a)
 
 🌐 Step 6: Install Node Exporter:
 ----------------------------------
@@ -120,6 +133,7 @@ mv node_exporter-1.8.1.linux-amd64 node_exporter
 cd node_exporter
 ./node_exporter
 ```
+![Image](https://github.com/user-attachments/assets/720f01d3-0619-49d4-8646-b672b88110fd)
 
 Visit 
 ```
@@ -127,6 +141,7 @@ http://<vm-ip>:9100/metrics
 ```
  — you should see plain text metrics.
 
+![Image](https://github.com/user-attachments/assets/386980cc-82a6-4ed9-899d-abab16e60be8)
 
 📊 Step 7: Install Grafana:
 ----------------------------
@@ -278,10 +293,17 @@ Copy this password. You will use this in place of your regular Gmail password in
 cd alertmanager/alertmanager
 ./alertmanager --config.file=alertmanager.yml
 ```
+![Image](https://github.com/user-attachments/assets/f39ef876-855e-4b7f-ace0-0c4fd0bba13b)
+
+![Image](https://github.com/user-attachments/assets/8bf06599-3f67-405e-bbd2-ad9434e34a87)
+
+
 Access:
 ```
  http://<vm-ip>:9093
 ```
+![Image](https://github.com/user-attachments/assets/190d5806-d1a0-4985-85f5-7c138c4f4624)
+
 
 ⚠️ Step 9: Setup Alert Rules in Prometheus:
 ---------------------------------------------
@@ -349,16 +371,39 @@ alertmanager (1/1 up)
 node_exporter (1/1 up)
 prometheus (1/1 up)
 ```
+As like below:
+
+![Image](https://github.com/user-attachments/assets/099ea40b-812c-46c5-963f-fd24ec95d328)
+
 Then only you can see all the  CPU / MEM / DISK  in the dashboard successfully if any of the Promotheus, Node Exporter, Alert Manager are gone down we cant get the detailes of the
 CPU / MEM / DISK properly like we might see them as N/A (not available).
 
 
 
+you should see "node_exporter"server as:
+----------------------------------------
+
+![Image](https://github.com/user-attachments/assets/386980cc-82a6-4ed9-899d-abab16e60be8)
+
+![Image](https://github.com/user-attachments/assets/23a7b16e-91ae-4ebe-9906-48ab70160784)
+
+
+And "Prometheus" server as:
+---------------------------
+
+![Image](https://github.com/user-attachments/assets/a7bf8f81-2a6b-47e2-84db-83415c8839b1)
+
+
+alert-manager as:
+-----------------
+
+![Image](https://github.com/user-attachments/assets/190d5806-d1a0-4985-85f5-7c138c4f4624)
+
+![Image](https://github.com/user-attachments/assets/a235a4f4-b9d9-444e-966a-c3f3bebb55d1)
 
 
 
+Finally visible representation in "Grafana" server would be appear as below:
+-----------------------------------------------------------------------------
 
-
-
-
-
+![Image](https://github.com/user-attachments/assets/d195a658-413c-4a84-8513-53116a798b34)
