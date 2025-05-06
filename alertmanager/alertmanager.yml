@@ -1,0 +1,16 @@
+global:
+  resolve_timeout: 1m
+
+route:
+  receiver: 'email-alert'
+
+receivers:
+  - name: 'email-alert'
+    email_configs:
+      - to: "suryasjv139@gmail.com"  # Recipient email address
+        from: "suryasjv139@gmail.com"  # Sender email address (your Gmail)
+        smarthost: "smtp.gmail.com:587"
+        auth_username: "suryasjv139@gmail.com"  # Your Gmail address
+        auth_password: "aecz uplp wwsm xvqa"  # The 16-character App Password
+        auth_identity: "suryasjv139@gmail.com"
+        require_tls: true
